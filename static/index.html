@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" type="text/css" href="static/styles/main.css">
+    <meta charset="utf-8">
+    <title>API Spector</title>
+  </head>
+  <body>
+    <div class='container'>
+      <div class="side">
+        <header style="display:flex;padding-left: 4%;">
+          <img src="static/api-spector.png" style="width:300px;">
+        </header>
+        <div id="openAPI">
+            <div class='select-model' style="align-items: normal">
+              <h4>Search Mode</h4>
+              <p style="text-align:left; font-weight: bold">
+                By OpenAPI Specification <br>
+              </p>
+              <p style="text-align:left; color: gray; font-style: italic">
+                Example: {"paths": {"/imgtrend": {"get": {"summary": "Return trending images"}}}}
+              </p>
+              <p style="text-align:left; font-weight: bold">
+                By Endpoint <br>
+              </p>
+              <p style="text-align:left; color: gray; font-style: italic">
+                Example: /images/trending <br><br>
+              </p>
+              <h5>Data from Public Github</h5>
+            </div>
+            <div class='input-box'>
+                <textarea id="api_query">{
+  "paths": {
+    "/imgtrend": {
+      "get": {"summary": "Return trending images"}
+    }
+  }
+}</textarea>
+            </div>
+            <div class='button-holder'>
+                <button class='request-button' onclick="search()">Search</button>
+            </div>
+        </div>
+      </div>
+      <div class="list">
+        <div id="results"></div>
+        <section id="loading">
+            <div style="display: flex; justify-content: center; flex-direction: row">
+              <span class="loading__anim"></span>
+            </div>
+            <div>
+              Loading.... 
+              <div class="loading__note">
+                  On average, it should take ~6s.
+                </div>
+            </div>
+        </section>
+      </div>
+    </div>
+    <script src="static/lib/codemirror.js"></script>
+    <link rel="stylesheet" href="static/lib/codemirror.css">
+    <script src="static/mode/clike/clike.js"></script>
+    <script src="static/mode/javascript/javascript.js"></script>
+    <script src="static/scripts/api_calls.js"></script>
+  </body>
+</html>

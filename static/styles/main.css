@@ -1,0 +1,141 @@
+body {
+    background-color :white  
+}
+  
+button {
+    transition-duration: 0.4s;
+    width: 40%;
+    border-radius: 25px;
+    margin: 10px;
+    background: white;
+  }
+
+
+button:hover:enabled {
+    background-color: rgb(45, 45, 212);
+    color: white;
+}
+
+p {
+    display: flex;
+    margin: 10px;
+    font-family: sans-serif;
+    font-size: 14px;
+}
+
+#userNote {
+    font-size: 12px
+}
+
+#loading{
+    max-width: 90%;  
+    width: 2000px; 
+    font-size: 1.2rem;  
+    font-weight: bold;  
+    text-align: center;
+    display: none;
+    flex-direction: column;
+    flex-grow: 1;
+    justify-content: center;
+    line-height: 4
+}
+
+.loading__note {  
+    font-weight: normal;  
+    font-size: 0.9rem;  
+    color: rgba(189,189,189 ,1);  
+    font-style: italic;
+}
+
+@keyframes rotate { 
+    to {  transform: rotate(1turn) }
+}
+
+.loading__anim {  
+    width: 35px;  
+    height: 35px;
+    display: inline-block;   
+    border: 5px solid rgba(189,189,189 ,0.25); 
+    border-left-color: rgba(3,155,229 ,1);  
+    border-top-color: rgba(3,155,229 ,1);  
+    border-radius: 50%;
+    animation: rotate 800ms infinite linear;
+}
+
+
+.container {
+    display: flex;
+    flex-direction: row;
+    height: 100vh;
+    margin: 10px;
+}
+
+.list{
+    display: flex;
+    flex-direction: column;
+    overflow: scroll;
+    padding-top: 80px;
+}
+
+.side{
+    display: flex;
+    flex-direction: column;
+    max-width: 500px;
+    min-width: 500px
+}
+
+.input-box{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+  }
+
+.input-box > .CodeMirror{
+    max-width: 425px;
+    min-width: 425px;
+}
+
+.select-model {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    border-radius: 10px;
+    border-style: solid;
+    border-color: #00000024;
+    border-width: thin;
+    color: #000000;
+    direction: ltr;
+    padding: 25px;
+    margin: 10px;
+    font-family: sans-serif;
+    text-align: center
+}
+
+#custom-options{
+    display: flex;
+    justify-content: center;
+}
+
+.button-holder {
+    display: flex;
+    width: 100%;
+    justify-content: center
+}
+
+.long-button {
+    width: 200px
+}
+
+#error_msg{
+    margin-left: 20%;
+    margin-top: 20%;
+    border-radius: 10px;
+    border-style: solid;
+    border-color: #00000024;
+    border-width: thin;
+    color: #000000;
+    padding: 25px;
+    font-family: sans-serif;
+    min-width: 200px;
+    max-width: 500px;
+}

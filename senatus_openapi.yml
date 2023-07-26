@@ -1,0 +1,111 @@
+swagger: "2.0"
+info:
+  description: "Senatus Swagger Search API"
+  version: "1.0"
+  license:
+    name: "(c) Copyright JP Morgan Chase Ltd. 2020"
+paths:
+  /search_by_endpoint:
+    get:
+      summary: "Search for OpenAPI Specification Snippets by endpoints"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "endpoint"
+        in: query
+        type: string
+        required: true
+      - name: "limit"
+        in: query
+        type: int
+      responses:
+        "200":
+          description: "Return search results."
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/EndpointResult"
+        "400":
+          description: "Bad Request - Expect string as input."
+        "404":
+          description: "Unseen Endpoint - Please supply the OpenAPI Specification."
+  /search_by_spec:
+    get:
+      summary: "Search for OpenAPI Specification Snippets by specification"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "spec"
+        in: query
+        type: object
+        required: true
+      - name: "limit"
+        in: query
+        type: int
+      responses:
+        "200":
+          description: "Return search results."
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/EndpointResult"
+        "400":
+          description: "Bad Request - Expect one JSON  String specification as input."
+        "422":
+          description: "Malformed Input - Supply Valid OpenAPI Spec"
+  /analyse:
+    get:
+      summary: "Analyse OpenAPI Specs provided and return their similarities scores."
+      parameters:
+      - name: "spec"
+        in: query
+        description: "List of OpenAPI Specifications"
+        required: true
+        schema:
+          type: object
+      - name: "group_by"
+        description: "Analysis on a Specification Level"
+        schema:
+          type: boolean
+      responses:
+        "200":
+          description: "Return search results."
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/AnalysisResult"
+        "400":
+          description: "Bad Request - Expect string as input."
+        "422":
+          description: "Malformed Input - Supply Valid OpenAPI Spec"
+definitions:
+  EndpointResult:
+    type: object
+    properties:
+      endpoint:
+        type: string
+      similarity_score:
+        type: float
+      spec_snippets:
+        items:
+          $ref: '#/definitions/SpecSnippet'
+  SpecSnippet:
+    type: object
+    properties:
+      endpoint_info:
+        type: object
+      ref_def:
+        type: object
+  AnalysisResult:
+    type: object
+    properties:
+      endpoints:
+        type: string
+      id2idx:
+        type: object
+      idx2id:
+        type: object
+      spec2indices:
+        type: object
+      similarities:
+        type: array
