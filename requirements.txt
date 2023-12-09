@@ -4,7 +4,7 @@ nltk==3.6.2
 pyyaml==5.4.1
 spacy==3.0.6
 fuzzywuzzy==0.18.0
-pyinstaller==4.3
+pyinstaller==5.13.1
 xlrd==2.0.1
 pandas==1.2.5
 flask==2.0.1
