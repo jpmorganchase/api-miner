@@ -10,7 +10,7 @@ pandas==1.2.5
 flask==2.0.1
 python-Levenshtein==0.12.2
 flasgger==0.9.4
-transformers==4.8.2
+transformers==4.36.0
 tabulate==0.8.9
 sentence-transformers==1.2.0
 statsmodels==0.12.2
